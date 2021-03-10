@@ -6,7 +6,15 @@ Component {
 
     Rectangle {
 
-        color: "dodgerblue"
+        ScrollView {
+            anchors.fill: parent
+
+            ListView {
+                id: listview
+                model: UsersBaseModel {}
+                delegate: UsersDelegate {}
+            }
+        }
 
     }
 
