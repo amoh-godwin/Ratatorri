@@ -6,16 +6,18 @@ import "../customs" as Custs
 Component {
 
     Rectangle {
-        color: "dodgerblue"
 
         GridLayout {
             width: 248
-            height: 248
+            height: 128
             anchors.centerIn: parent
             columns: 2
 
             Custs.CustomButton{
                 text: "Hello"
+
+                onClicked: stack.push(userComp);
+
             }
 
             Custs.CustomButton{

@@ -16,5 +16,6 @@ ApplicationWindow {
     }
 
     Comps.WelcomeComp { id: welcComp; }
+    Comps.UsersComp { id: userComp; }
 
 }
