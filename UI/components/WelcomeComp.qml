@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+import "../customs" as Custs
 
 Component {
 
@@ -13,23 +14,21 @@ Component {
             anchors.centerIn: parent
             columns: 2
 
-            /*Button {
-                Layout.fillHeight: true
-                Layout.fillWidth: true
+            Custs.CustomButton{
                 text: "Hello"
             }
 
-            Button {
+            Custs.CustomButton{
                 text: "Hello"
             }
 
-            Button {
+            Custs.CustomButton{
                 text: "Hello"
             }
 
-            Button {
+            Custs.CustomButton{
                 text: "Hello"
-            }*/
+            }
 
 
         }
