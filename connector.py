@@ -4,7 +4,7 @@ from threading import Thread
 from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal
 
 import model
-
+import misc
 
 class Connector(QObject):
 
@@ -29,5 +29,5 @@ class Connector(QObject):
     def _get_users(self):
 
         users = model.see_all()
-        print(users)
-        self.usersFetched.emit(users)
+        parsed_users = misc.convert_users_to_json(users)
+        self.usersFetched.emit(parsed_users)
