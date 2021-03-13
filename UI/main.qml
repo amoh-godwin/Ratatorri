@@ -8,7 +8,7 @@ ApplicationWindow {
     height: 560
     title: "Ratatorri"
 
-    property QtObject backend
+    property QtObject connector
     property string users_model: '[{}]'
 
     StackView {
@@ -22,7 +22,7 @@ ApplicationWindow {
     Comps.UsersComp { id: userComp; }
 
     Connections {
-        target: backend
+        target: connector
     }
 
 }
