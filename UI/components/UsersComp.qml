@@ -7,6 +7,10 @@ Component {
     Rectangle {
         color: "white"
 
+        StackView.onActivating: {
+            backend.get_users()
+        }
+
         Rectangle {
             anchors.fill: parent
             anchors.margins: 8
