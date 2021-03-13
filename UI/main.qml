@@ -23,6 +23,12 @@ ApplicationWindow {
 
     Connections {
         target: backend
+
+        function onUsersFetched(users) {
+            //users_model = users
+            stack.currentItem.modelUpdated(users)
+        }
+
     }
 
 }

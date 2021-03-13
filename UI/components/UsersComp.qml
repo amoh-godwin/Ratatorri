@@ -7,6 +7,15 @@ Component {
     Rectangle {
         color: "white"
 
+        signal modelUpdated(var model)
+
+        onModelUpdated: {
+
+            for(var i =0; i<model.length; i++) {
+                listview.model.append(model[i])
+            }
+        }
+
         StackView.onActivating: {
             backend.get_users()
         }
@@ -40,7 +49,6 @@ Component {
                 ScrollView {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-
                     ListView {
                         id: listview
                         model: UsersBaseModel {}
