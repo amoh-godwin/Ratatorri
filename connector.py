@@ -3,6 +3,8 @@ from threading import Thread
 
 from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal
 
+import model
+
 
 class Connector(QObject):
 
@@ -16,6 +18,8 @@ class Connector(QObject):
     def __init__(self):
         QObject.__init__(self)
 
+    usersFetched = pyqtSignal(str, arguments=['_get_users'])
+
     @pyqtSlot()
     def get_users(self):
         u_thread = Thread(target=self._get_users)
@@ -23,4 +27,7 @@ class Connector(QObject):
         u_thread.start()
 
     def _get_users(self):
-        print('yam')
+
+        users = model.see_all()
+        print(users)
+        self.usersFetched.emit(users)

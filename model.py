@@ -264,8 +264,11 @@ def see_reg():
 
 
 def see_all():
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
     sql = """SELECT * FROM users"""
     cursor.execute(sql)
     all = cursor.fetchall()
+    conn.close()
     return all
 
