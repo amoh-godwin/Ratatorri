@@ -16,10 +16,7 @@ def convert_users_to_json(data):
             row['last_visited'] = x
         info.append(row)
 
-    # convert to string
-    json = str(info)
-
-    return json
+    return info
 
 
 

@@ -1,5 +1,6 @@
 # Created on 13th March, 2021
 from threading import Thread
+from time import sleep
 
 from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal
 
@@ -18,7 +19,7 @@ class Connector(QObject):
     def __init__(self):
         QObject.__init__(self)
 
-    usersFetched = pyqtSignal(str, arguments=['_get_users'])
+    usersFetched = pyqtSignal(list, arguments=['_get_users'])
 
     @pyqtSlot()
     def get_users(self):
@@ -27,7 +28,7 @@ class Connector(QObject):
         u_thread.start()
 
     def _get_users(self):
-
+        sleep(0.5)
         users = model.see_all()
         parsed_users = misc.convert_users_to_json(users)
         self.usersFetched.emit(parsed_users)
