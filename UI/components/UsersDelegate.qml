@@ -5,15 +5,16 @@ import QtQuick.Layouts 1.15
 Component {
 
     Rectangle {
-        anchors.fill: parent
+        width: 20
+        height: 28
 
         RowLayout {
             Text {
-                text: name
+                text: fullname
             }
 
             Text {
-                text: name
+                text: email
             }
 
         }
