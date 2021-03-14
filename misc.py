@@ -19,7 +19,6 @@ def convert_users_to_json(data):
     return info
 
 
-
 def gen_pq(rge):
     alphabet = string.ascii_letters + string.digits
     return ''.join([secrets.choice(alphabet) for i in range(rge)])
