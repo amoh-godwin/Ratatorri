@@ -33,14 +33,31 @@ Component {
                     Layout.preferredHeight: 24
 
                     RowLayout {
+                        width: parent.width
                         height: parent.height
-                        Text {
-                            text: "Name"
+
+                        Rectangle {
+                            Layout.fillWidth: true
+                            Text {
+                                text: "Name"
+                            }
                         }
 
-                        Text {
-                            text: "Email"
+                        Rectangle {
+                            Layout.fillWidth: true
+                            Text {
+                                text: "Email"
+                            }
                         }
+
+                        Rectangle {
+                            Layout.fillWidth: true
+                            Text {
+                                text: "passcode"
+                            }
+                        }
+
+
 
                     }
 
