@@ -12,7 +12,7 @@ Component {
         onModelUpdated: {
 
             for(var i =0; i<model.length; i++) {
-                listview.model.append(model[i])
+                table_view.model.appendRow(model[i])
             }
         }
 
