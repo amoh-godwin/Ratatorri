@@ -49,10 +49,16 @@ Component {
                 ScrollView {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    ListView {
-                        id: listview
+
+                    TableView {
+                        id: table_view
+                        anchors.fill: parent
+                        rowSpacing: 1
+                        columnSpacing: 1
+                        boundsBehavior: Flickable.StopAtBounds
                         model: UsersBaseModel {}
                         delegate: UsersDelegate {}
+
                     }
                 }
 
