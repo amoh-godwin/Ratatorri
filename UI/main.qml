@@ -4,8 +4,8 @@ import "components" as Comps
 
 ApplicationWindow {
     visible: true
-    width: 480
-    height: 560
+    width: 1000
+    height: 600
     title: "Ratatorri"
 
     property QtObject backend
