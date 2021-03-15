@@ -36,8 +36,9 @@ def create_others_table():
 
 
 def alter_table():
-    sql = """ALTER TABLE other """
+    sql = """ALTER TABLE users ADD pratical_project_py text"""
     cursor.execute(sql)
+    conn.commit()
 
 
 def drop_table():
