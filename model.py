@@ -172,6 +172,14 @@ def add_python_gui(email):
     return True
 
 
+def add_users_course(email, co):
+    sql = """UPDATE users SET {co}='True' WHERE email=?"""
+    # ToDo Add timestamp
+    cursor.execute(sql, (email))
+    conn.commit()
+    return True
+
+
 def add_toda(email):
     sql = """UPDATE users SET toda=? WHERE email=?"""
     # ToDo Add timestamp
