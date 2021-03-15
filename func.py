@@ -3,7 +3,7 @@ from json import loads
 import string
 import secrets
 from random import randrange
-from tb_sel import up
+from tb_sel import up, loggin, nroll_other
 import model
 from misc import rand_num, gen_pq, gen_clas
 
@@ -29,4 +29,21 @@ def start():
             return
 
 
-start()
+def nroll_cou(co, linker):
+    u_nons = model.select_none_course(co)
+    print(len(u_nons))
+
+    count = 1
+    for x in u_nons:
+        print('log0')
+        bow = loggin(x[0], x[1])
+        if bow:
+            ret = nroll_other(bow, linker)
+            if ret:
+                ret_sta = model.add_users_course(x[0], co)
+                print(f'count {count}: {ret_sta}')
+                sleep(2)
+            print(ret, '\n\n')
+            sleep(5)
+        # close out
+        bow.close()
