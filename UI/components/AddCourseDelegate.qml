@@ -10,6 +10,7 @@ Component {
 
         RowLayout {
             anchors.fill: parent
+            anchors.margins: 8
 
             Text {
                 text: email
@@ -17,6 +18,7 @@ Component {
 
             Text {
                 text: status
+                color: text == 'registered' ? "green": "gold"
             }
 
         }
