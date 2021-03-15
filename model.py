@@ -122,6 +122,15 @@ def insert_other(link, title, expired):
     return True
 
 
+def insert_dummy(db, co):
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
+    sql = f"""UPDATE {db} SET {co}='False'"""
+    cursor.execute(sql)
+    conn.commit()
+    conn.close()
+
+
 def add_course(co, email, passcode, duration, last_visited):
     sql = f"""INSERT INTO {co}
     (email, passcode, duration, last_visited) 
@@ -272,4 +281,3 @@ def see_all():
     all = cursor.fetchall()
     conn.close()
     return all
-
