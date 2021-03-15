@@ -15,6 +15,7 @@ TableModel {
     TableModelColumn { display: "toda" }
     TableModelColumn { display: "soft_dev" }
     TableModelColumn { display: "last_visited" }
+    TableModelColumn { display: "python_proj_py" }
 
     rows: [
         /*{
