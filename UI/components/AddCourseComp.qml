@@ -23,8 +23,8 @@ Component {
 
                     ListView {
                         id: list_view
-                        model: {}
-                        delegate: {}
+                        model: AddCourseBaseModel {}
+                        delegate: AddCourseDelegate {}
                     }
 
                 }
