@@ -10,6 +10,9 @@ DelegateChooser {
         column: 0
         delegate: Text {
             text: model.display
+
+            Component.onCompleted: one = this.width
+
         }
     }
 
@@ -24,6 +27,9 @@ DelegateChooser {
         column: 12
         delegate: Text {
             text: model.display
+
+            Component.onCompleted: twelve = this.width
+
         }
     }
 

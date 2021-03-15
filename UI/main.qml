@@ -11,6 +11,20 @@ ApplicationWindow {
     property QtObject backend
     property string users_model: '[{}]'
 
+    // TableView column widths
+    property int one: 48 //90
+    property int two: 24
+    property int three: 24
+    property int four: 24
+    property int five: 24
+    property int six: 24
+    property int seven: 24
+    property int eight: 24
+    property int nine: 24
+    property int ten: 24
+    property int eleven: 24
+    property int twelve: 24
+
     StackView {
         id: stack
         anchors.fill: parent
