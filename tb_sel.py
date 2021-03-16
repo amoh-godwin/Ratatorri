@@ -221,8 +221,8 @@ def acther(browser, co, per):
     wait_on_page=5, wait_for_page_body=True)
     except:
         # not nroll
+        print('not nroll')
         return False
-    sleep(12)
     """
     try:
         ddcs = browser.find_elements_by_class_name("card--learning")
@@ -247,6 +247,7 @@ def acther(browser, co, per):
     ddc.click()
     """
     sleep(12)
+    print('this is')
     # check if reall
     try:
         el = browser.find_element_by_class_name("styles--btn--express-checkout--28jN4")

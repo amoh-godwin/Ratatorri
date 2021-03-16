@@ -72,7 +72,7 @@ def watchers(co, cn, signal_n, signal_per):
     count = -1
     for x in all_s:
         count += 1
-        if count < 3:
+        if count < 4:
             continue
         r_num = randrange(15, 75)
         print('log', r_num)
