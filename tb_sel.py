@@ -113,11 +113,20 @@ def nroll_other(browser, link):
 
 
 def loggin(ema, pas):
-    browser = TorBrowserDriver(tbb_dir, tor_cfg=cm.USE_STEM)
+    try:
+        browser = TorBrowserDriver(tbb_dir, tor_cfg=cm.USE_STEM)
+    except:
+        # selenium.common.exceptions.WebDriverException: Message: Access is denied. (os error 5)
+        # mozilla is updating
+        print('probably updating sleep 30')
+        sleep(30)
+        browser = TorBrowserDriver(tbb_dir, tor_cfg=cm.USE_STEM)
     # connect to site
     browser.load_url("https://www.udemy.com/join/login-popup/?locale=en_US&response_type=html&next=https%3A%2F%2Fwww.udemy.com%2F",
     wait_on_page=5, wait_for_page_body=True)
     # reg_el.click()
+    # maximise
+    browser.maximize_window()
     # Scroll
     browser.execute_script("window.scrollTo(0,100)")
     try:
