@@ -6,6 +6,7 @@ from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal
 
 import model
 import misc
+from func import nroll_cou
 
 class Connector(QObject):
 
@@ -21,6 +22,7 @@ class Connector(QObject):
 
     usersFetched = pyqtSignal(list, arguments=['_get_users'])
     nroll_name = pyqtSignal(list, arguments=['nroll_cou'])
+    nroll_status = pyqtSignal(int, str, arguments=['nroll_cou'])
 
     @pyqtSlot()
     def get_users(self):
@@ -42,5 +44,5 @@ class Connector(QObject):
 
     def _start_nroll_cou(self):
         sleep(0.5)
-        pass
+        nroll_cou('pratical_project_py', '', self.nroll_name, self.nroll_status)
 
