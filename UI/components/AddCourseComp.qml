@@ -5,6 +5,17 @@ import QtQuick.Layouts 1.15
 Component {
     Rectangle {
 
+        signal changeStatus(int ind, string status)
+        signal addedNames(var names)
+
+        onChangeStatus: {
+            list_view.model.setProperty(ind, 'status', status)
+        }
+        onAddedNames: {
+            for (var i=0; i<names.length-1; i++)
+                list_view.model.append(names[i])
+        }
+
         StackView.onActivating: backend.start_nroll_cou()
 
         ColumnLayout {
