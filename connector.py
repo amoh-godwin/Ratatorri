@@ -23,6 +23,8 @@ class Connector(QObject):
     usersFetched = pyqtSignal(list, arguments=['_get_users'])
     nroll_name = pyqtSignal(list, arguments=['nroll_cou'])
     nroll_status = pyqtSignal(int, str, arguments=['nroll_cou'])
+    watchers_nam = pyqtSignal(list, arguments=['watchers'])
+    watchers_per = pyqtSignal(int, int, arguments=['watchers'])
 
     @pyqtSlot()
     def get_users(self):
@@ -48,11 +50,11 @@ class Connector(QObject):
 
     @pyqtSlot()
     def watch(self, nam):
-        u_thread = Thread(target=self._start_nroll_cou, args=[nam])
+        u_thread = Thread(target=self._watch, args=[nam])
         u_thread.daemon = True
         u_thread.start()
 
-    def _start_nroll_cou(self, nam):
+    def _watch(self, nam):
         sleep(0.5)
-        watchers(nam)
+        watchers(nam, self.watchers_nam, self.watchers_per)
 

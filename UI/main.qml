@@ -53,6 +53,14 @@ ApplicationWindow {
             stack.currentItem.changeStatus(ind, status)
         }
 
+        function onWatchers_nam(lists) {
+            stack.currentItem.addedNames(lists)
+        }
+
+        function onWatchers_per(ind, per) {
+            stack.currentItem.changePercent(ind, per)
+        }
+
     }
 
 }

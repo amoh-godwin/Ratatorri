@@ -5,6 +5,17 @@ import QtQuick.Layouts 1.15
 Component {
     Rectangle {
 
+        signal changePercent(int ind, int per)
+        signal addedNames(var names)
+
+        onChangePercent: {
+            list_view.model.setProperty(ind, 'percent', per)
+        }
+        onAddedNames: {
+            for (var i=0; i<names.length-1; i++)
+                list_view.model.append(names[i])
+        }
+
         StackView.onActivating: backend.watch('Practical Project in Python: Build a Sign in Page')
 
         ColumnLayout {

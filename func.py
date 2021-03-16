@@ -57,8 +57,10 @@ def nroll_cou(co, linker, signal_nroll, signal_status):
         # close out
         bow.close()
 
-def watchers(co):
+def watchers(co, signal_n, signal_per):
     all_s = model.select_course_uu('python_gui')
+    json = convert_two_to_json(all_s, 'email', 'percent')
+    signal_n.emit(json)
     # https://www.udemy.com/home/my-courses/
     # https://www.udemy.com/course/python-gui-software-development-in-python/learn/
     # modal-content
@@ -67,16 +69,15 @@ def watchers(co):
 
     # co = "Python Gui - Software development in python"
     # "/course/python-gui-software-development-in-python/learn/"
-    count = 0
+    count = -1
     for x in all_s:
-        if count < 2:
-            count += 1
-        else:
-            r_num = randrange(15, 50)
-            print('log', r_num)
-            browser = loggin(x[0], x[1])
-            per = acther(browser, co, r_num)
-            browser.close()
-            ret = model.update_course('python_gui', x[0], per, int(time()))
-            print(ret, '\n\n')
-            sleep(30)
+        count += 1
+        r_num = randrange(15, 50)
+        print('log', r_num)
+        browser = loggin(x[0], x[1])
+        per = acther(browser, co, r_num)
+        browser.close()
+        signal_per.emit(count, int(per))
+        ret = model.update_course('python_gui', x[0], per, int(time()))
+        print(ret, '\n\n')
+        sleep(30)
