@@ -20,6 +20,7 @@ class Connector(QObject):
         QObject.__init__(self)
 
     usersFetched = pyqtSignal(list, arguments=['_get_users'])
+    nroll_name = pyqtSignal(list, arguments=['nroll_cou'])
 
     @pyqtSlot()
     def get_users(self):

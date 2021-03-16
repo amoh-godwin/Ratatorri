@@ -5,7 +5,7 @@ import secrets
 from random import randrange
 from tb_sel import up, loggin, nroll_other
 import model
-from misc import rand_num, gen_pq, gen_clas
+from misc import rand_num, gen_pq, gen_clas, convert_users_to_json
 
 print('this page run')
 
@@ -29,9 +29,10 @@ def start():
             return
 
 
-def nroll_cou(co, linker):
+def nroll_cou(co, linker, signal_nroll):
     u_nons = model.select_none_course(co)
-    print(len(u_nons))
+    json = convert_users_to_json(u_nons)
+    signal_nroll.emit(json)
 
     count = 1
     for x in u_nons:
