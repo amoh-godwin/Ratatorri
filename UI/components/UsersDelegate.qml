@@ -18,15 +18,17 @@ DelegateChooser {
 
     DelegateChoice {
         column: 1
-        delegate: Text {
+        delegate: TextField {
             text: model.display
+            selectByMouse: true
         }
     }
 
     DelegateChoice {
-        column: 12
-        delegate: Text {
+        column: 2
+        delegate: TextField {
             text: model.display
+            selectByMouse: true
 
             Component.onCompleted: twelve = this.width
 
