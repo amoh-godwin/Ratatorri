@@ -48,7 +48,7 @@ class Connector(QObject):
         sleep(0.5)
         nroll_cou('pratical_project_py', link, self.nroll_name, self.nroll_status)
 
-    @pyqtSlot()
+    @pyqtSlot(str, str)
     def watch(self, nam, cn):
         u_thread = Thread(target=self._watch, args=[nam, cn])
         u_thread.daemon = True
