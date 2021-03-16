@@ -1,9 +1,9 @@
-from time import sleep
+from time import sleep, time
 from json import loads
 import string
 import secrets
 from random import randrange
-from tb_sel import up, loggin, nroll_other
+from tb_sel import up, loggin, nroll_other, acther
 import model
 from misc import rand_num, gen_pq, gen_clas, convert_two_to_json
 
@@ -56,3 +56,27 @@ def nroll_cou(co, linker, signal_nroll, signal_status):
             signal_status.emit(count, 'unable to log')
         # close out
         bow.close()
+
+def watchers(co):
+    all_s = model.select_course_uu('python_gui')
+    # https://www.udemy.com/home/my-courses/
+    # https://www.udemy.com/course/python-gui-software-development-in-python/learn/
+    # modal-content
+    # card--learning
+    # details__name
+
+    # co = "Python Gui - Software development in python"
+    # "/course/python-gui-software-development-in-python/learn/"
+    count = 0
+    for x in all_s:
+        if count < 2:
+            count += 1
+        else:
+            r_num = randrange(15, 50)
+            print('log', r_num)
+            browser = loggin(x[0], x[1])
+            per = acther(browser, co, r_num)
+            browser.close()
+            ret = model.update_course('python_gui', x[0], per, int(time()))
+            print(ret, '\n\n')
+            sleep(30)
