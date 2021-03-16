@@ -16,7 +16,7 @@ Component {
                 list_view.model.append(names[i])
         }
 
-        StackView.onActivating: backend.watch('Practical Project in Python: Build a Sign in Page')
+        StackView.onActivating: backend.watch('Practical Project in Python: Build a Sign in Page', 'pratical_project_py')
 
         ColumnLayout {
             anchors.fill: parent

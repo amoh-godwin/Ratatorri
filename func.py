@@ -57,8 +57,8 @@ def nroll_cou(co, linker, signal_nroll, signal_status):
         # close out
         bow.close()
 
-def watchers(co, signal_n, signal_per):
-    all_s = model.select_course_uu('python_gui')
+def watchers(co, cn, signal_n, signal_per):
+    all_s = model.select_course_uu(cn)
     json = convert_two_to_json(all_s, 'email', 'percent')
     signal_n.emit(json)
     # https://www.udemy.com/home/my-courses/
