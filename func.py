@@ -72,12 +72,15 @@ def watchers(co, cn, signal_n, signal_per):
     count = -1
     for x in all_s:
         count += 1
-        r_num = randrange(15, 50)
+        if count < 3:
+            continue
+        r_num = randrange(15, 75)
         print('log', r_num)
         browser = loggin(x[0], x[1])
         per = acther(browser, co, r_num)
+        if per:
+            signal_per.emit(count, int(per))
+            ret = model.update_course(cn, x[0], per, int(time()))
+            print(ret, '\n\n')
+            sleep(1)
         browser.close()
-        signal_per.emit(count, int(per))
-        ret = model.update_course('python_gui', x[0], per, int(time()))
-        print(ret, '\n\n')
-        sleep(30)

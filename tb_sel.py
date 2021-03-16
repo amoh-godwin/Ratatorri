@@ -216,8 +216,12 @@ def acther(browser, co, per):
     print('home')
     # goto link
 
-    browser.load_url(co,
+    try:
+        browser.load_url(co,
     wait_on_page=5, wait_for_page_body=True)
+    except:
+        # not nroll
+        return False
     sleep(12)
     """
     try:
