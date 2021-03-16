@@ -13,10 +13,12 @@ Component {
             anchors.margins: 8
 
             Text {
+                Layout.fillWidth: true
                 text: email
             }
 
             Text {
+                Layout.preferredWidth: 72
                 text: status
                 color: text == 'success' ? "green": "gold"
             }
