@@ -306,7 +306,7 @@ def acther(browser, co, per):
                     pass
                 else:
                     las[y].click()
-                    browser.execute_script("window.scrollTo(0,32)")
+                    browser.execute_script("window.scrollBy(0,32)")
             else:
                 break
         # click to close
