@@ -1,7 +1,7 @@
 import sqlite3
 from time import time
-conn = sqlite3.connect('test.db')
-cursor = conn.cursor()
+#conn = sqlite3.connect('test.db')
+#cursor = conn.cursor()
 
 
 def create_table():
@@ -173,10 +173,13 @@ def add_python_gui(email):
 
 
 def add_users_course(email, co):
-    sql = """UPDATE users SET {co}='True' WHERE email=?"""
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
+    sql = f"""UPDATE users SET {co}='True' WHERE email='{email}'"""
     # ToDo Add timestamp
-    cursor.execute(sql, (email))
+    cursor.execute(sql)
     conn.commit()
+    conn.close()
     return True
 
 
