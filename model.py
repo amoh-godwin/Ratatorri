@@ -18,11 +18,14 @@ def create_table():
 
 def create_table_py():
     return
-    sql = """CREATE TABLE python_gui (email text,
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
+    sql = """CREATE TABLE pratical_project_py (email text,
     passcode text, duration Number,
      last_visited Number)"""
     cursor.execute(sql)
     conn.commit()
+    conn.close()
     return True
 
 
@@ -200,9 +203,12 @@ def add_soft_dev(email):
 
 
 def update_course(co, email, dura, last_v):
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
     sql = f"""UPDATE {co} SET duration=?, last_visited=? WHERE email=?"""
     cursor.execute(sql, (dura, last_v, email))
     conn.commit()
+    conn.close()
     return True
 
 
@@ -260,9 +266,12 @@ def select_y_others(email):
 
 
 def select_course_uu(co):
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
     sql = f"""SELECT email, passcode FROM users WHERE {co}='True'"""
     cursor.execute(sql)
     all = cursor.fetchall()
+    conn.close()
     return all
 
 
