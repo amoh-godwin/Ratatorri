@@ -45,7 +45,11 @@ ApplicationWindow {
         }
 
         function onNroll_name(lists) {
-            console.log('what a wonderful')
+            stack.currentItem.addedNames(lists)
+        }
+
+        function onNroll_status(ind, status) {
+            stack.currentItem.changeStatus(ind, status)
         }
 
     }
