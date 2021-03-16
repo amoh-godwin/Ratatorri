@@ -19,6 +19,16 @@ def convert_users_to_json(data):
     return info
 
 
+def convert_two_to_json(data, col1, col2):
+    info = []
+
+    for x in data:
+        row = {}
+        row[col1], row[col2] = x
+        info.append(row)
+
+    return info
+
 def gen_pq(rge):
     alphabet = string.ascii_letters + string.digits
     return ''.join([secrets.choice(alphabet) for i in range(rge)])

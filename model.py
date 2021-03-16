@@ -218,9 +218,12 @@ def select_u_others():
 
 
 def select_none_course(course):
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
     sql = f"""SELECT email, passcode FROM users WHERE registered='True' and {course}='False'"""
     cursor.execute(sql)
     all = cursor.fetchall()
+    conn.close()
     return all
 
 
