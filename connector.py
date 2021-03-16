@@ -6,7 +6,7 @@ from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal
 
 import model
 import misc
-from func import nroll_cou
+from func import nroll_cou, watchers
 
 class Connector(QObject):
 
@@ -38,11 +38,21 @@ class Connector(QObject):
 
     @pyqtSlot()
     def start_nroll_cou(self, link):
-        u_thread = Thread(target=self._start_nroll_cou, args=['link'])
+        u_thread = Thread(target=self._start_nroll_cou, args=[link])
         u_thread.daemon = True
         u_thread.start()
 
     def _start_nroll_cou(self, link):
         sleep(0.5)
         nroll_cou('pratical_project_py', link, self.nroll_name, self.nroll_status)
+
+    @pyqtSlot()
+    def watch(self, nam):
+        u_thread = Thread(target=self._start_nroll_cou, args=[nam])
+        u_thread.daemon = True
+        u_thread.start()
+
+    def _start_nroll_cou(self, nam):
+        sleep(0.5)
+        watchers(nam)
 
