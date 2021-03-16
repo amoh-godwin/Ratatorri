@@ -13,12 +13,21 @@ def convert_users_to_json(data):
             row['country'], row['registered'], row['others'], \
             row['win_photos'], row['python_gui'], row['py_gui_ufb'], \
             row['pyqt'], row['toda'], row['soft_dev'], \
-            row['last_visited'] = x
+            row['last_visited'], row['pratical_project_py'] = x
         info.append(row)
 
     return info
 
 
+def convert_two_to_json(data, col1, col2):
+    info = []
+
+    for x in data:
+        row = {}
+        row[col1], row[col2] = x
+        info.append(row)
+
+    return info
 
 def gen_pq(rge):
     alphabet = string.ascii_letters + string.digits
