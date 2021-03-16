@@ -32,3 +32,14 @@ class Connector(QObject):
         users = model.see_all()
         parsed_users = misc.convert_users_to_json(users)
         self.usersFetched.emit(parsed_users)
+
+    @pyqtSlot()
+    def start_nroll_cou(self):
+        u_thread = Thread(target=self._start_nroll_cou)
+        u_thread.daemon = True
+        u_thread.start()
+
+    def _start_nroll_cou(self):
+        sleep(0.5)
+        pass
+

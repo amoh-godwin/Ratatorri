@@ -5,6 +5,8 @@ import QtQuick.Layouts 1.15
 Component {
     Rectangle {
 
+        StackView.onActivating: backend.start_nroll_cou()
+
         ColumnLayout {
             anchors.fill: parent
             spacing: 0
