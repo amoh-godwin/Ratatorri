@@ -14,14 +14,15 @@ Component {
             columns: 2
 
             Custs.CustomButton{
-                text: "Hello"
+                text: "Users"
 
                 onClicked: stack.push(userComp);
 
             }
 
             Custs.CustomButton{
-                text: "Hello"
+                text: "ADD course"
+                onClicked: stack.push(addCourseComp);
             }
 
             Custs.CustomButton{

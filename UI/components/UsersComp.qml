@@ -12,7 +12,7 @@ Component {
         onModelUpdated: {
 
             for(var i =0; i<model.length; i++) {
-                listview.model.append(model[i])
+                table_view.model.appendRow(model[i])
             }
         }
 
@@ -33,14 +33,35 @@ Component {
                     Layout.preferredHeight: 24
 
                     RowLayout {
+                        //width: parent.width
                         height: parent.height
-                        Text {
-                            text: "Name"
+                        spacing: 0
+
+                        Rectangle {
+                            Layout.preferredWidth: one
+                            Layout.fillHeight: true
+                            Text {
+                                text: "Name"
+                            }
                         }
 
-                        Text {
-                            text: "Email"
+                        Rectangle {
+                            Layout.preferredWidth: two
+                            Layout.fillHeight: true
+                            Text {
+                                text: "Email"
+                            }
                         }
+
+                        Rectangle {
+                            Layout.preferredWidth: twelve
+                            Layout.fillHeight: true
+                            Text {
+                                text: twelve//"Last Visited"
+                            }
+                        }
+
+
 
                     }
 
@@ -49,10 +70,16 @@ Component {
                 ScrollView {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    ListView {
-                        id: listview
+
+                    TableView {
+                        id: table_view
+                        anchors.fill: parent
+                        rowSpacing: 1
+                        columnSpacing: 1
+                        boundsBehavior: Flickable.StopAtBounds
                         model: UsersBaseModel {}
                         delegate: UsersDelegate {}
+
                     }
                 }
 

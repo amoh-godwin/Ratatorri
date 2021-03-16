@@ -36,8 +36,9 @@ def create_others_table():
 
 
 def alter_table():
-    sql = """ALTER TABLE other """
+    sql = """ALTER TABLE users ADD pratical_project_py text"""
     cursor.execute(sql)
+    conn.commit()
 
 
 def drop_table():
@@ -121,6 +122,15 @@ def insert_other(link, title, expired):
     return True
 
 
+def insert_dummy(db, co):
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
+    sql = f"""UPDATE {db} SET {co}='False'"""
+    cursor.execute(sql)
+    conn.commit()
+    conn.close()
+
+
 def add_course(co, email, passcode, duration, last_visited):
     sql = f"""INSERT INTO {co}
     (email, passcode, duration, last_visited) 
@@ -158,6 +168,14 @@ def add_python_gui(email):
     sql = """UPDATE users SET python_gui=? WHERE email=?"""
     # ToDo Add timestamp
     cursor.execute(sql, ("True", email))
+    conn.commit()
+    return True
+
+
+def add_users_course(email, co):
+    sql = """UPDATE users SET {co}='True' WHERE email=?"""
+    # ToDo Add timestamp
+    cursor.execute(sql, (email))
     conn.commit()
     return True
 
@@ -200,9 +218,12 @@ def select_u_others():
 
 
 def select_none_course(course):
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
     sql = f"""SELECT email, passcode FROM users WHERE registered='True' and {course}='False'"""
     cursor.execute(sql)
     all = cursor.fetchall()
+    conn.close()
     return all
 
 
@@ -271,4 +292,3 @@ def see_all():
     all = cursor.fetchall()
     conn.close()
     return all
-
