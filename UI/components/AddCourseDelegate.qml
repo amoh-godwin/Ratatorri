@@ -18,7 +18,7 @@ Component {
 
             Text {
                 text: status
-                color: text == 'registered' ? "green": "gold"
+                color: text == 'success' ? "green": "gold"
             }
 
         }
