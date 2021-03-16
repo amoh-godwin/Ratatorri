@@ -35,6 +35,7 @@ ApplicationWindow {
     Comps.WelcomeComp { id: welcComp; }
     Comps.UsersComp { id: userComp; }
     Comps.AddCourseComp {id: addCourseComp; }
+    Comps.WatcherComp {id: wathersComp; }
 
     Connections {
         target: backend
