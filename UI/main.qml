@@ -35,6 +35,7 @@ ApplicationWindow {
     Comps.WelcomeComp { id: welcComp; }
     Comps.UsersComp { id: userComp; }
     Comps.AddCourseComp {id: addCourseComp; }
+    Comps.WatcherComp {id: wathersComp; }
 
     Connections {
         target: backend
@@ -50,6 +51,14 @@ ApplicationWindow {
 
         function onNroll_status(ind, status) {
             stack.currentItem.changeStatus(ind, status)
+        }
+
+        function onWatchers_nam(lists) {
+            stack.currentItem.addedNames(lists)
+        }
+
+        function onWatchers_per(ind, per) {
+            stack.currentItem.changePercent(ind, per)
         }
 
     }

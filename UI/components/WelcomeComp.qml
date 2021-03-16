@@ -22,11 +22,14 @@ Component {
 
             Custs.CustomButton{
                 text: "ADD course"
+
                 onClicked: stack.push(addCourseComp);
             }
 
             Custs.CustomButton{
-                text: "Hello"
+                text: "Watchers"
+
+                onClicked: stack.push(watchersComp);
             }
 
             Custs.CustomButton{

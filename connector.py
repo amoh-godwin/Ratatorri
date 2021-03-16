@@ -6,7 +6,7 @@ from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal
 
 import model
 import misc
-from func import nroll_cou
+from func import nroll_cou, watchers
 
 class Connector(QObject):
 
@@ -23,6 +23,8 @@ class Connector(QObject):
     usersFetched = pyqtSignal(list, arguments=['_get_users'])
     nroll_name = pyqtSignal(list, arguments=['nroll_cou'])
     nroll_status = pyqtSignal(int, str, arguments=['nroll_cou'])
+    watchers_nam = pyqtSignal(list, arguments=['watchers'])
+    watchers_per = pyqtSignal(int, int, arguments=['watchers'])
 
     @pyqtSlot()
     def get_users(self):
@@ -37,12 +39,22 @@ class Connector(QObject):
         self.usersFetched.emit(parsed_users)
 
     @pyqtSlot()
-    def start_nroll_cou(self):
-        u_thread = Thread(target=self._start_nroll_cou)
+    def start_nroll_cou(self, link):
+        u_thread = Thread(target=self._start_nroll_cou, args=[link])
         u_thread.daemon = True
         u_thread.start()
 
-    def _start_nroll_cou(self):
+    def _start_nroll_cou(self, link):
         sleep(0.5)
-        nroll_cou('pratical_project_py', '', self.nroll_name, self.nroll_status)
+        nroll_cou('pratical_project_py', link, self.nroll_name, self.nroll_status)
+
+    @pyqtSlot()
+    def watch(self, nam, cn):
+        u_thread = Thread(target=self._watch, args=[nam, cn])
+        u_thread.daemon = True
+        u_thread.start()
+
+    def _watch(self, nam, cn):
+        sleep(0.5)
+        watchers(nam, cn, self.watchers_nam, self.watchers_per)
 

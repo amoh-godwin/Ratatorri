@@ -5,18 +5,18 @@ import QtQuick.Layouts 1.15
 Component {
     Rectangle {
 
-        signal changeStatus(int ind, string status)
+        signal changePercent(int ind, int per)
         signal addedNames(var names)
 
-        onChangeStatus: {
-            list_view.model.setProperty(ind, 'status', status)
+        onChangePercent: {
+            list_view.model.setProperty(ind, 'percent', per)
         }
         onAddedNames: {
             for (var i=0; i<names.length-1; i++)
                 list_view.model.append(names[i])
         }
 
-        StackView.onActivating: backend.start_nroll_cou('https://www.udemy.com/course/practical-project-in-python-and-qml3')
+        StackView.onActivating: backend.watch('Practical Project in Python: Build a Sign in Page', 'pratical_project_py')
 
         ColumnLayout {
             anchors.fill: parent
@@ -36,8 +36,8 @@ Component {
 
                     ListView {
                         id: list_view
-                        model: AddCourseBaseModel {}
-                        delegate: AddCourseDelegate {}
+                        model: WatchersBaseModel {}
+                        delegate: WatchersDelegate {}
                     }
 
                 }
