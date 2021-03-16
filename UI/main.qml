@@ -44,6 +44,10 @@ ApplicationWindow {
             stack.currentItem.modelUpdated(users)
         }
 
+        function onNroll_name(lists) {
+            console.log('what a wonderful')
+        }
+
     }
 
 }
