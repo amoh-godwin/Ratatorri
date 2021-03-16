@@ -37,12 +37,12 @@ class Connector(QObject):
         self.usersFetched.emit(parsed_users)
 
     @pyqtSlot()
-    def start_nroll_cou(self):
-        u_thread = Thread(target=self._start_nroll_cou)
+    def start_nroll_cou(self, link):
+        u_thread = Thread(target=self._start_nroll_cou, args=['link'])
         u_thread.daemon = True
         u_thread.start()
 
-    def _start_nroll_cou(self):
+    def _start_nroll_cou(self, link):
         sleep(0.5)
-        nroll_cou('pratical_project_py', '', self.nroll_name, self.nroll_status)
+        nroll_cou('pratical_project_py', link, self.nroll_name, self.nroll_status)
 
