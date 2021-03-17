@@ -38,7 +38,7 @@ class Connector(QObject):
         parsed_users = misc.convert_users_to_json(users)
         self.usersFetched.emit(parsed_users)
 
-    @pyqtSlot()
+    @pyqtSlot(str)
     def start_nroll_cou(self, link):
         u_thread = Thread(target=self._start_nroll_cou, args=[link])
         u_thread.daemon = True
