@@ -213,9 +213,12 @@ def update_course(co, email, dura, last_v):
 
 
 def select_none_others():
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
     sql = """SELECT email, passcode FROM users WHERE registered='True'"""
     cursor.execute(sql)
     all = cursor.fetchall()
+    conn.close()
     return all
 
 
