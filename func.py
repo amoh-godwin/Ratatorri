@@ -30,7 +30,7 @@ def start():
 
 
 def nroll_cou(co, linker, signal_nroll, signal_status):
-    u_nons = model.select_none_course(co)
+    u_nons = model.select_none_others()
     json = convert_two_to_json(u_nons, 'email', 'status')
     signal_nroll.emit(json)
 
@@ -45,13 +45,13 @@ def nroll_cou(co, linker, signal_nroll, signal_status):
             signal_status.emit(count, 'in progress')
             ret = nroll_other(bow, linker)
             if ret:
-                if model.add_users_course(x[0], co):
+                if True:#model.add_users_course(x[0], co):
                     signal_status.emit(count, 'success')
                 sleep(0.2)
             else:
                 signal_status.emit(count, 'error')
 
-            sleep(1)
+            sleep(5)
         else:
             signal_status.emit(count, 'unable to log')
         # close out
