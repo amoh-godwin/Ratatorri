@@ -104,14 +104,17 @@ def add_names(pos, name_list):
 
 
 def insert_user(fullname, email, passcode):
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
     sql = """INSERT INTO users
     (fullname, email, passcode, country, registered, others,
-    win_photos, python_gui, py_gui_ufb, pyqt, toda, soft_dev, last_visited)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+    win_photos, python_gui, py_gui_ufb, pyqt, toda, soft_dev, last_visited, pratical_project_py)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
     cursor.execute(sql, (fullname, email, passcode, "False",
     "False", "False", "False", "False", "False", "False", "False",
-     "False", time()))
+     "False", time(), "False"))
     conn.commit()
+    conn.close()
     return True
 
 
