@@ -10,6 +10,16 @@ from misc import rand_num, gen_pq, gen_clas, convert_two_to_json
 print('this page run')
 
 
+def add_users():
+    with open('unsardined.txt', 'r') as un:
+        lines = un.readlines()
+        for line in lines:
+            n, e, p = line.split(':::')
+            print(p.strip())
+            model.strip(p.strip(), e.lower())
+            #model.insert_user(n, e, p.strip())
+
+
 def start():
     all = model.see_unr()
     count = 0
@@ -37,6 +47,8 @@ def nroll_cou(co, linker, signal_nroll, signal_status):
     count = -1
     for x in u_nons:
         count += 1
+        if count < 9:
+            continue
         signal_status.emit(count, 'registering')
         print('log0')
         bow = loggin(x[0], x[1])
@@ -56,6 +68,7 @@ def nroll_cou(co, linker, signal_nroll, signal_status):
             signal_status.emit(count, 'unable to log')
         # close out
         bow.close()
+
 
 def watchers(co, cn, signal_n, signal_per):
     all_s = model.select_course_uu(cn)
