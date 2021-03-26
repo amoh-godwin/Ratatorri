@@ -16,7 +16,7 @@ Component {
                 list_view.model.append(names[i])
         }
 
-        StackView.onActivating: backend.start_nroll_cou('https://www.udemy.com/course/practical-project-in-python-and-qml3')
+        StackView.onActivating: backend.start_nroll_cou('https://www.udemy.com/course/software-development-in-python-a-practical-approach/?couponCode=14981A085541EA675680')
 
         ColumnLayout {
             anchors.fill: parent
