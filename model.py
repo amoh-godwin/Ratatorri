@@ -62,6 +62,15 @@ def delete_some():
     return True
 
 
+def delete_usr(email):
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
+    sql = """DELETE FROM users WHERE email=?"""
+    cursor.execute(sql, (email,))
+    conn.commit()
+    return True
+
+
 def create_table_sh():# delete this tabel
     sql = """CREATE TABLE usheets (surry text, othrry text)"""
     cursor.execute(sql)
