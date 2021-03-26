@@ -5,15 +5,26 @@ import QtQuick.Layouts 1.15
 Component {
 
     Rectangle {
+        id: comp
         color: "white"
 
         signal modelUpdated(var model)
+
+        property QtObject currBtn
 
         onModelUpdated: {
 
             for(var i =0; i<model.length; i++) {
                 table_view.model.appendRow(model[i])
             }
+        }
+
+        ButtonGroup {
+            id: viewBtnGroup
+            onClicked: {
+                console.log(button.parent)
+                comp.currBtn = button }
+
         }
 
         StackView.onActivating: {
@@ -38,6 +49,9 @@ Component {
                         Button {
                             text: "Delete"
                             Layout.alignment: Qt.AlignRight
+                            onClicked: {
+                                console.log(comp.currBtn.parent)
+                            }
                         }
 
                     }

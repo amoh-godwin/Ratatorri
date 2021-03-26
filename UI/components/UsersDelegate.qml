@@ -8,6 +8,13 @@ DelegateChooser {
 
     DelegateChoice {
         column: 0
+        delegate: RadioButton {
+            ButtonGroup.group: viewBtnGroup
+        }
+    }
+
+    DelegateChoice {
+        column: 0
         delegate: Text {
             text: model.display
 
