@@ -46,7 +46,7 @@ class Connector(QObject):
 
     def _start_nroll_cou(self, link):
         sleep(0.5)
-        nroll_cou('pratical_project_py', link, self.nroll_name, self.nroll_status)
+        nroll_cou('soft_dev', link, self.nroll_name, self.nroll_status)
 
     @pyqtSlot(str, str)
     def watch(self, nam, cn):
