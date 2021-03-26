@@ -30,6 +30,21 @@ Component {
 
                 Rectangle {
                     Layout.fillWidth: true
+                    Layout.preferredHeight: 48
+
+                    RowLayout {
+                        anchors.fill: parent
+
+                        Button {
+                            text: "Delete"
+                            Layout.alignment: Qt.AlignRight
+                        }
+
+                    }
+                }
+
+                Rectangle {// header
+                    Layout.fillWidth: true
                     Layout.preferredHeight: 24
 
                     RowLayout {
@@ -61,10 +76,7 @@ Component {
                             }
                         }
 
-
-
                     }
-
                 }
 
                 ScrollView {
