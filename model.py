@@ -39,9 +39,12 @@ def create_others_table():
 
 
 def alter_table():
-    sql = """ALTER TABLE users ADD pratical_project_py text"""
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
+    sql = """ALTER TABLE pratical_project_py ADD rating Number"""
     cursor.execute(sql)
     conn.commit()
+    conn.close()
 
 
 def drop_table():
@@ -137,11 +140,13 @@ def insert_dummy(db, co):
     conn.close()
 
 
-def add_course(co, email, passcode, duration, last_visited):
+def add_course(co, email, passcode, duration, last_visited, level):
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
     sql = f"""INSERT INTO {co}
-    (email, passcode, duration, last_visited) 
-    VALUES (?, ?, ?, ?)"""
-    cursor.execute(sql, (email, passcode, duration, last_visited))
+    (email, passcode, duration, last_visited, rating) 
+    VALUES (?, ?, ?, ?, ?)"""
+    cursor.execute(sql, (email, passcode, duration, last_visited, level))
     conn.commit()
     return True
 
@@ -155,14 +160,19 @@ def expire_other(link):
 
 def register_user(email):
 
-    sql = f"""UPDATE users SET registered='True' WHERE email='{email}'"""
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
+    sql = """UPDATE users SET registered='True' WHERE email=?"""
     print(f'sql for register user: {sql}')
-    cursor.execute(sql)
+    cursor.execute(sql, (email,))
     conn.commit()
+    conn.close()
     return True
 
 
 def add_user_others(email, courses):
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
     sql = """UPDATE users SET others=? WHERE email=?"""
     # ToDo Add timestamp
     cursor.execute(sql, (courses, email))
@@ -171,6 +181,8 @@ def add_user_others(email, courses):
 
 
 def add_python_gui(email):
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
     sql = """UPDATE users SET python_gui=? WHERE email=?"""
     # ToDo Add timestamp
     cursor.execute(sql, ("True", email))
@@ -181,7 +193,7 @@ def add_python_gui(email):
 def add_users_course(email, co):
     conn = sqlite3.connect('test.db')
     cursor = conn.cursor()
-    sql = f"""UPDATE users SET {co}='True' WHERE email='{email}'"""
+    sql = f"UPDATE users SET {co}='True' WHERE email='{email}'"
     # ToDo Add timestamp
     cursor.execute(sql)
     conn.commit()
@@ -289,6 +301,8 @@ def select_course(co, dura):
 
 
 def see_unr():
+    conn = sqlite3.connect('test.db')
+    cursor = conn.cursor()
     sql = """SELECT fullname, email, passcode FROM users WHERE registered='False'"""
     cursor.execute(sql)
     all = cursor.fetchall()
