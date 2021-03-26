@@ -30,6 +30,16 @@ DelegateChooser {
             text: model.display
             selectByMouse: true
 
+            Component.onCompleted: four = this.width
+
+        }
+    }
+
+    DelegateChoice {
+        column: 5
+        delegate: Text {
+            text: model.display
+
             Component.onCompleted: twelve = this.width
 
         }
