@@ -22,21 +22,21 @@ def add_users():
 
 def start():
     all = model.see_unr()
-    count = 0
+    count = -1
     for x in all:
-        if count < 15:
+        count += 1
+        if count >= 13 and count < 23:
             print(x)
             print('Sleeping...')
             sleep(1)
-            if up(x[0], x[1], x[2]):
+            if True:#up(x[0], x[1], x[2]):
                 #
                 model.register_user(x[1])
                 print(f'done {x}')
-                count += 1
                 print('sleeping...', '\n')
         else:
             print(count)
-            return
+            #sreturn
 
 
 def nroll_cou(co, linker, signal_nroll, signal_status):
@@ -47,7 +47,7 @@ def nroll_cou(co, linker, signal_nroll, signal_status):
     count = -1
     for x in u_nons:
         count += 1
-        if count < 9:
+        if count < 14:
             continue
         signal_status.emit(count, 'registering')
         print('log0')
@@ -57,7 +57,7 @@ def nroll_cou(co, linker, signal_nroll, signal_status):
             signal_status.emit(count, 'in progress')
             ret = nroll_other(bow, linker)
             if ret:
-                if True:#model.add_users_course(x[0], co):
+                if model.add_users_course(x[0], co):
                     signal_status.emit(count, 'success')
                 sleep(0.2)
             else:
