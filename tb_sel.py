@@ -15,6 +15,7 @@ launch_tbb_tor_with_stem(tbb_dir) # I think you can remove this, but maybe some 
 
 def nroll_other(browser, link):
     browser.maximize_window()
+    sleep(35)
     browser.load_url(link,
     wait_on_page=5, wait_for_page_body=True)
 
@@ -38,10 +39,15 @@ def nroll_other(browser, link):
         except:
             # probably obscured
             browser.execute_script("window.scrollBy(0,100)")
-            el.click()
+            try:
+                el.click()
+            except:
+                # probably obscured
+                browser.execute_script("window.scrollBy(0,24)")
+                el.click()
 
         print('enroll')
-        sleep(12)
+        sleep(5)
         if 'checkout' in browser.current_url:
             print('chec')
             try:
@@ -342,7 +348,7 @@ def up(name, ema, pas):
     pass_el = browser.find_element_by_id("password")
     pass_el.send_keys(pas)
     # Scroll
-    browser.execute_script("window.scrollTo(0,100)")
+    browser.execute_script("window.scrollBy(0,200)")
     browser.execute_script('document.getElementById("id_subscribe_to_emails").checked = false')
 
     # find submit link
@@ -351,6 +357,23 @@ def up(name, ema, pas):
     sub_el.click()
     sleep(1)
     # check
+    if 'occupation' in browser.current_url:
+        # find submit link
+        sleep(3)
+        try:
+            browser.execute_script('document.getElementsByClassName("ot-sdk-container").sytle.display = "none"')
+        except:
+            pass
+        cl = browser.find_elements_by_class_name("udlite-btn")
+        try:
+            cl[0].click()
+        except:
+            browser.execute_script('document.getElementsByClassName("ot-sdk-container").sytle.display = "none"')
+            cl[0].click()
+
+        sleep(3)
+        browser.close()
+        return True
     if '=1' in browser.current_url:
         browser.close()
         return True
