@@ -38,7 +38,7 @@ class Connector(QObject):
         parsed_users = misc.convert_users_to_json(users)
         self.usersFetched.emit(parsed_users)
 
-    @pyqtSlot()
+    @pyqtSlot(str)
     def start_nroll_cou(self, link):
         u_thread = Thread(target=self._start_nroll_cou, args=[link])
         u_thread.daemon = True
@@ -46,9 +46,9 @@ class Connector(QObject):
 
     def _start_nroll_cou(self, link):
         sleep(0.5)
-        nroll_cou('pratical_project_py', link, self.nroll_name, self.nroll_status)
+        nroll_cou('soft_dev', link, self.nroll_name, self.nroll_status)
 
-    @pyqtSlot()
+    @pyqtSlot(str, str)
     def watch(self, nam, cn):
         u_thread = Thread(target=self._watch, args=[nam, cn])
         u_thread.daemon = True

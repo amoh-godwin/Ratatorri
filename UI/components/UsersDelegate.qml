@@ -8,6 +8,13 @@ DelegateChooser {
 
     DelegateChoice {
         column: 0
+        delegate: RadioButton {
+            ButtonGroup.group: viewBtnGroup
+        }
+    }
+
+    DelegateChoice {
+        column: 0
         delegate: Text {
             text: model.display
 
@@ -18,13 +25,25 @@ DelegateChooser {
 
     DelegateChoice {
         column: 1
-        delegate: Text {
+        delegate: TextField {
             text: model.display
+            selectByMouse: true
         }
     }
 
     DelegateChoice {
-        column: 12
+        column: 2
+        delegate: TextField {
+            text: model.display
+            selectByMouse: true
+
+            Component.onCompleted: four = this.width
+
+        }
+    }
+
+    DelegateChoice {
+        column: 5
         delegate: Text {
             text: model.display
 
